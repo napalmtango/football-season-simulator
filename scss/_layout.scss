@@ -2,8 +2,7 @@
 .standings {
   display: grid;
   align-items: center;
+  grid-template-columns: auto auto auto auto auto auto auto;
 
-  &-header {
-    display: grid;
-  }
+  
 }

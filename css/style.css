@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 0.5px solid maroon;
 }
 
 body {
@@ -23,9 +22,5 @@ h2 {
 .standings {
   display: grid;
   align-items: center;
-  grid-template-columns: auto auto auto auto auto auto;
-
-}
-.standings-header {
-  
+  grid-template-columns: auto auto auto auto auto auto auto;
 }/*# sourceMappingURL=style.css.map */
