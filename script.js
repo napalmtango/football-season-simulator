@@ -1,11 +1,10 @@
-const league = [{
-  name: "Rams",
-  won: 3,
-  lost: 1,
-  tied: 0,
-  ptsfor: 100,
-  ptsag: 83,
-}]
+const league = [
+  ["Rams", 3, 1, 0, 100,83,],
+  ["49ers", 2, 1, 1, 89,65,],
+  ["Seahawks", 1, 2, 1, 76,89,],
+  ["Cardinals", 1, 3, 0, 87,128,],
+
+]
 ;
 let tempPctVar = 0;
 
@@ -15,15 +14,55 @@ function pct(wins, losses, ties) {
   console.log((wins+ties/2)/gamesPlayed);
   tempPctVar = (wins+ties/2)/gamesPlayed
 }
-pct(league[0].won, league[0].lost, league[0].tied)
 
-document.getElementById("name1").textContent=league[0].name;
-document.getElementById("won1").textContent=league[0].won;
-document.getElementById("lost1").textContent=league[0].lost;
+
+let c = 0
+pct(league[c][1], league[c][2], league[c][3])
+
+document.getElementById("name1").textContent=league[c][0];
+document.getElementById("won1").textContent=league[c][1];
+document.getElementById("lost1").textContent=league[c][2];
+document.getElementById("tied1").textContent=league[c][3];
 document.getElementById("pct1").textContent=tempPctVar;
-document.getElementById("ptsfor1").textContent=league[0].ptsfor;
-document.getElementById("ptsag1").textContent=league[0].ptsag;
+document.getElementById("ptsfor1").textContent=league[c][4];
+document.getElementById("ptsag1").textContent=league[c][5];
+
+c = 1
+pct(league[c][1], league[c][2], league[c][3])
+
+document.getElementById("name2").textContent=league[c][0];
+document.getElementById("won2").textContent=league[c][1];
+document.getElementById("lost2").textContent=league[c][2];
+document.getElementById("tied2").textContent=league[c][3];
+document.getElementById("pct2").textContent=tempPctVar;
+document.getElementById("ptsfor2").textContent=league[c][4];
+document.getElementById("ptsag2").textContent=league[c][5];
+
+c = 2
+pct(league[c][1], league[c][2], league[c][3])
+
+document.getElementById("name3").textContent=league[c][0];
+document.getElementById("won3").textContent=league[c][1];
+document.getElementById("lost3").textContent=league[c][2];
+document.getElementById("tied3").textContent=league[c][3];
+document.getElementById("pct3").textContent=tempPctVar;
+document.getElementById("ptsfor3").textContent=league[c][4];
+document.getElementById("ptsag3").textContent=league[c][5];
+
+c = 3
+pct(league[c][1], league[c][2], league[c][3])
+
+document.getElementById("name4").textContent=league[c][0];
+document.getElementById("won4").textContent=league[c][1];
+document.getElementById("lost4").textContent=league[c][2];
+document.getElementById("tied4").textContent=league[c][3];
+document.getElementById("pct4").textContent=tempPctVar;
+document.getElementById("ptsfor4").textContent=league[c][4];
+document.getElementById("ptsag4").textContent=league[c][5];
 
 
-console.log(league[0].name);
-console.log(league[0].won);
+
+
+
+
+console.table(league);
