@@ -1,20 +1,32 @@
 const league = [
-  ["Rams", 3, 1, 0, 100,83,],
-  ["49ers", 2, 1, 1, 89,65,],
-  ["Seahawks", 1, 2, 1, 76,89,],
-  ["Cardinals", 1, 3, 0, 87,128,],
+  ["Rams", 3, 1, 0, 100, 83,],
+  ["49ers", 2, 1, 1, 89, 65,],
+  ["Seahawks", 1, 2, 1, 76, 89,],
+  ["Cardinals", 1, 3, 0, 87, 115,],
+];
 
-]
-;
+const schedule = [
+  [1,"@", 0, 3,"@", 2],
+  [0,"@", 2, 3,"@", 1],
+  [2,"@", 1, 0,"@", 3],
+  [0,"@", 1, 2,"@", 3],
+  [2,"@", 0, 1,"@", 3],
+  [1,"@", 2, 3,"@", 0]
+];
+
 let tempPctVar = 0;
 
 function pct(wins, losses, ties) {
   console.log("function syntax worked" + wins  + losses  + ties);
   let gamesPlayed = wins+losses+ties;
   console.log((wins+ties/2)/gamesPlayed);
-  tempPctVar = (wins+ties/2)/gamesPlayed
-}
-
+  tempPctVar = (wins+ties/2)/gamesPlayed;
+  tempPctVar = tempPctVar.toFixed(3);
+  if (tempPctVar < 1) {
+    tempPctVar = tempPctVar.toString();
+    tempPctVar = tempPctVar.replace("0", "");
+    };
+  }
 
 let c = 0
 pct(league[c][1], league[c][2], league[c][3])
