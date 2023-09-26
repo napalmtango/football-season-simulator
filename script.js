@@ -17,9 +17,9 @@ const schedule = [
 let tempPctVar = 0;
 
 function pct(wins, losses, ties) {
-  console.log("function syntax worked" + wins  + losses  + ties);
+  console.log("function syntax worked " + wins  + " "  + losses  + " "  + ties);
   let gamesPlayed = wins+losses+ties;
-  console.log((wins+ties/2)/gamesPlayed);
+  console.log("percent result: " + (wins+ties/2)/gamesPlayed);
   tempPctVar = (wins+ties/2)/gamesPlayed;
   tempPctVar = tempPctVar.toFixed(3);
   if (tempPctVar < 1) {
@@ -27,6 +27,8 @@ function pct(wins, losses, ties) {
     tempPctVar = tempPctVar.replace("0", "");
     };
   }
+
+//Enclose in loop--BEGIN
 
 let c = 0
 pct(league[c][1], league[c][2], league[c][3])
@@ -72,6 +74,7 @@ document.getElementById("pct4").textContent=tempPctVar;
 document.getElementById("ptsfor4").textContent=league[c][4];
 document.getElementById("ptsag4").textContent=league[c][5];
 
+//Enclose in loop--END
 
 
 
