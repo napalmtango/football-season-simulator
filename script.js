@@ -6,13 +6,15 @@ const league = [
 ];
 
 const schedule = [
-  [1,"@", 0, 3,"@", 2],
-  [0,"@", 2, 3,"@", 1],
-  [2,"@", 1, 0,"@", 3],
-  [0,"@", 1, 2,"@", 3],
-  [2,"@", 0, 1,"@", 3],
-  [1,"@", 2, 3,"@", 0]
+  [1, 0, 3, 2],
+  [0, 2, 3, 1],
+  [2, 1, 0, 3],
+  [0, 1, 2, 3],
+  [2, 0, 1, 3],
+  [1, 2, 3, 0]
 ];
+
+const sp = " ";
 
 let tempPctVar = 0;
 
@@ -76,8 +78,41 @@ document.getElementById("ptsag4").textContent=league[c][5];
 
 //Enclose in loop--END
 
+//Schedule
+// Enclose in loop--START
+let w = 0;
+document.getElementById("week1-1").innerHTML=league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
+document.getElementById("week1-2").innerHTML=league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
 
+w = 1;
+document.getElementById("week2-1").innerHTML=league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
+document.getElementById("week2-2").innerHTML=league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
 
+w = 2;
+document.getElementById("week3-1").innerHTML=league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
+document.getElementById("week3-2").innerHTML=league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
 
+w = 3;
+document.getElementById("week4-1").innerHTML=league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
+document.getElementById("week4-2").innerHTML=league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
 
+w = 4;
+document.getElementById("week5-1").innerHTML=league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
+document.getElementById("week5-2").innerHTML=league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
+
+w = 5;
+document.getElementById("week6-1").innerHTML=league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
+document.getElementById("week6-2").innerHTML=league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
+// Enclose in loop--END
+
+//output league array to console
+console.log(sp);
+console.log(sp);
+console.log("League Array");
 console.table(league);
+
+//output schedule array to console
+console.log(sp);
+console.log(sp);
+console.log("Schedule Array");
+console.table(schedule);
