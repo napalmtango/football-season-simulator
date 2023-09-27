@@ -1,20 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100;200;300;400;500;600;700;800&display=swap');
+
 //Variables
-$h1small: 1.2rem;
-$h2small: 1rem;
+$h1small: 1.8rem;
+$h2small: 1.2rem;
 //Elements
 
-
 body {
-  font-family:'Ubuntu', sans-serif;
-  padding: .6em;
+  font-family: 'Anek Bangla', sans-serif;
+  color: #fff;
+  line-height: 1.25;
+  letter-spacing: .35;
 }
-
 h1 {
   font-size: $h1small;
+  color: gold;
+  margin: 0em 0em .9em;
+  letter-spacing: .75px;
+  text-align: center;
+  background-color: $bg-color-dark;
 }
 
 h2 {
   font-size: $h2small;
+  color: gold;
+  margin-bottom: .3em;
+  letter-spacing: .75px;
+
+
+}
+.subhead {
+  font-size: .78rem;
+  font-weight: 500;
+  margin-bottom: .2em;
+  letter-spacing: 1px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+
 }

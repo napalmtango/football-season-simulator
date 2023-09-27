@@ -1,8 +1,9 @@
 
 .standings {
   display: grid;
+  column-gap: 1ch;
   align-items: center;
-  grid-template-columns: auto auto auto auto auto auto auto;
-
-  
+  grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  // font-stretch: ultra-condensed;
+  // font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded|extra-expanded|ultra-expanded|initial|inherit;
 }
