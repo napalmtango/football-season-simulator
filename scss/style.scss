@@ -3,3 +3,16 @@
 @import "colors";
 @import "typography";
 @import "layout";
+
+body {
+  padding: .6em;
+  background-color: $bg-color;
+}
+
+h1 {
+  font-size: $h1small;
+}
+
+h2 {
+  font-size: $h2small;
+}
