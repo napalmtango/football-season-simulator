@@ -37,13 +37,13 @@ let c = 0;
 while (c < 4) {
   pct(league[c][1], league[c][2], league[c][3])
 
-  document.getElementById("name"+c).textContent=league[c][0];
-  document.getElementById("won"+c).textContent=league[c][1];
-  document.getElementById("lost"+c).textContent=league[c][2];
-  document.getElementById("tied"+c).textContent=league[c][3];
-  document.getElementById("pct"+c).textContent=tempPctVar;
-  document.getElementById("ptsfor"+c).textContent=league[c][4];
-  document.getElementById("ptsag"+c).textContent=league[c][5];
+  document.getElementById("name"+c).textContent = league[c][0];
+  document.getElementById("won"+c).textContent = league[c][1];
+  document.getElementById("lost"+c).textContent = league[c][2];
+  document.getElementById("tied"+c).textContent = league[c][3];
+  document.getElementById("pct"+c).textContent = tempPctVar;
+  document.getElementById("ptsfor"+c).textContent = league[c][4];
+  document.getElementById("ptsag"+c).textContent = league[c][5];
   c++;
 }
 
@@ -51,8 +51,8 @@ while (c < 4) {
 let w = 0;
 let w2 = 1
 while (w < 6) {
-document.getElementById("week"+w2+"-1").innerHTML=league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
-document.getElementById("week"+w2+"-2").innerHTML=league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
+document.getElementById("week"+w2+"-1").textContent = league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
+document.getElementById("week"+w2+"-2").textContent = league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
 w++;
 w2++;
 }
