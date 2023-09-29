@@ -15,22 +15,64 @@ const schedule = [
   [1, 2, 3, 0]
 ];
 
+let simWeek = 0;
+
 const sp = " ";
 
+let index = 0
+
+//Functions
+
+//Win Percent function
 function pct(wins, losses, ties) {
   let gamesPlayed = wins+losses+ties;
-  console.log("gamesPlayed: " + gamesPlayed);
   if (gamesPlayed === 0){gamesPlayed = 1};
-  console.log("revised gamesPlayed: " + gamesPlayed)
-  console.log("percent result: " + (wins+ties/2)/gamesPlayed);
   tempPctVar = (wins+ties/2)/gamesPlayed;
-  console.log(tempPctVar)
   tempPctVar = tempPctVar.toFixed(3);
   if (tempPctVar < 1) {
     tempPctVar = tempPctVar.toString();
     tempPctVar = tempPctVar.replace("0", "");
     };
   }
+
+//Game results functions
+const qtrScores = [ 0, 0, 0, 0, 3, 3, 6, 7, 7, 7, 10, 10, 14, 14];
+const team1Score = [ 0, 0, 0, 0];
+const team2Score = [ 0, 0, 0, 0];
+
+//remove logs--START
+let finalScore1 = 0;
+let finalScore2 = 0;
+let i = 0
+function scoreByQtr(){
+  while (i < 4) {
+  rndQtrScore()
+  team1Score[i] = qtrScores[index]
+  rndQtrScore()
+  team2Score[i] = qtrScores[index]
+  console.log("team1Score["+i+"] " + team1Score[i]);
+  console.log("team2Score["+i+"] " + team2Score[i]);
+  finalScore1 += team1Score[i];
+  finalScore2 += team2Score[i];
+  i++;
+  }
+}
+function rndQtrScore() {
+  index = Math.floor(Math.random() * qtrScores.length);
+}
+scoreByQtr();
+
+console.log("finalScore1 : " + finalScore1)
+console.log("finalScore2 : " + finalScore2)
+
+function  gameResults(){
+  console.log("gameResults()");
+  console.log("simWeek: " + simWeek);
+
+}
+  //Log gameResults
+gameResults();
+
 
 //Standings
 let c = 0;
