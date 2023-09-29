@@ -26,7 +26,7 @@ let index = 0
 //Win Percent function
 function pct(wins, losses, ties) {
   let gamesPlayed = wins+losses+ties;
-  if (gamesPlayed === 0){gamesPlayed = 1};
+  if (gamesPlayed === 0){gamesPlayed = 1};// In order to not receive NaN from dividing wins by zero(gamesPlayed) in line 30.
   tempPctVar = (wins+ties/2)/gamesPlayed;
   tempPctVar = tempPctVar.toFixed(3);
   if (tempPctVar < 1) {
@@ -36,20 +36,24 @@ function pct(wins, losses, ties) {
   }
 
 //Game results functions
-const qtrScores = [ 0, 0, 0, 0, 3, 3, 6, 7, 7, 7, 10, 10, 14, 14];
-const team1Score = [ 0, 0, 0, 0];
-const team2Score = [ 0, 0, 0, 0];
 
-//remove logs--START
+const qtrScores = [ 0, 0, 0, 0, 3, 3, 6, 7, 7, 7, 10, 10, 14, 14];//score by quarters for each team ill be draqwn from here with a randomly generated index
+
+//final score for each team derived by totaling these two arrays
+const team1Score = [ 0, 0, 0, 0];//scores by quarters for team1 stored here
+const team2Score = [ 0, 0, 0, 0];//scores by quarters for team2 stored here
+
+//remove trouble shooting logs after code is complete--START
 let finalScore1 = 0;
 let finalScore2 = 0;
 let i = 0
+
 function scoreByQtr(){
   while (i < 4) {
-  rndQtrScore()
-  team1Score[i] = qtrScores[index]
-  rndQtrScore()
-  team2Score[i] = qtrScores[index]
+  rndQtrScore() //pulls random score from qtrScores
+  team1Score[i] = qtrScores[index] //populate each quarter score for team1
+  rndQtrScore() //pulls random score from qtrScores
+  team2Score[i] = qtrScores[index] //populate each quarter score for team2
   console.log("team1Score["+i+"] " + team1Score[i]);
   console.log("team2Score["+i+"] " + team2Score[i]);
   finalScore1 += team1Score[i];
@@ -57,9 +61,12 @@ function scoreByQtr(){
   i++;
   }
 }
+//remove trouble shooting logs after code is complete--END
+
 function rndQtrScore() {
-  index = Math.floor(Math.random() * qtrScores.length);
+  index = Math.floor(Math.random() * qtrScores.length);// used to access qtrScores array (line 40) for populating team1Score & team2Score arrays
 }
+
 scoreByQtr();
 
 console.log("finalScore1 : " + finalScore1)
