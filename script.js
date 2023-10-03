@@ -16,17 +16,16 @@ const schedule = [
 ];
 
 let simWeek = 0;
-
 const sp = " ";
-
 let index = 0
 
-//Functions
+
+//Function declarations
 
 //Win Percent function
 function pct(wins, losses, ties) {
   let gamesPlayed = wins+losses+ties;
-  if (gamesPlayed === 0){gamesPlayed = 1};// In order to not receive NaN from dividing wins by zero(gamesPlayed) in line 30.
+  if (gamesPlayed === 0){gamesPlayed = 1};// In order to not receive NaN from dividing wins + ties/2 by zero (variable named gamesPlayed in line 30.)
   tempPctVar = (wins+ties/2)/gamesPlayed;
   tempPctVar = tempPctVar.toFixed(3);
   if (tempPctVar < 1) {
@@ -37,52 +36,112 @@ function pct(wins, losses, ties) {
 
 //Game results functions
 
-const qtrScores = [ 0, 0, 0, 0, 3, 3, 6, 7, 7, 7, 10, 10, 14, 14];//score by quarters for each team ill be draqwn from here with a randomly generated index
+//Variables
+//score by quarters for each team will be drawn from this array with a randomly generated index
+const qtrScores = [ 0, 0, 0, 0, 3, 3, 6, 7, 7, 7, 10, 10, 14, 14];
 
-//final score for each team derived by totaling these two arrays
-const team1Score = [ 0, 0, 0, 0];//scores by quarters for team1 stored here
-const team2Score = [ 0, 0, 0, 0];//scores by quarters for team2 stored here
+//final score for each team derived by totaling these  arrays:
+let teamScore = [
+[ 0, 0, 0, 0],
+[ 0, 0, 0, 0],
+[ 0, 0, 0, 0],
+[ 0, 0, 0, 0],
+]
+const team1Score = [ 0, 0, 0, 0];
+const team2Score = [ 0, 0, 0, 0];
+const team3Score = [ 0, 0, 0, 0];
+const team4Score = [ 0, 0, 0, 0];
 
-//remove trouble shooting logs after code is complete--START
+const finalScore = [ 0, 0, 0, 0];
 let finalScore1 = 0;
 let finalScore2 = 0;
-let i = 0
+let finalScore3 = 0;
+let finalScore4 = 0;
+let q = 0;
+let t = 0;
 
+
+//output league array to console
+console.log("League Array");
+console.table(league);
+
+//output schedule array to console
+console.log(sp);
+console.log(sp);
+console.log("Schedule Array");
+console.table(schedule);
+
+//Declare functions
+
+// Function called from onclick event
+function  weekResults(){
+
+  console.log("simWeek: " + simWeek);//remove
+  updateResults();
+  reset();
+}
+
+
+// Generates random index and assigns it to variable named index for grabbing score from qtrScores array
+function indicesQtrs() {
+  index = Math.floor(Math.random() * qtrScores.length);// used to access qtrScores array (line 40) for populating team1Score & team2Score arrays
+} 
+
+// Assigns random score to each quarter and updates finalScore vars with each iteration
 function scoreByQtr(){
-  while (i < 4) {
-  rndQtrScore() //pulls random score from qtrScores
-  team1Score[i] = qtrScores[index] //populate each quarter score for team1
-  rndQtrScore() //pulls random score from qtrScores
-  team2Score[i] = qtrScores[index] //populate each quarter score for team2
-  console.log("team1Score["+i+"] " + team1Score[i]);
-  console.log("team2Score["+i+"] " + team2Score[i]);
-  finalScore1 += team1Score[i];
-  finalScore2 += team2Score[i];
-  i++;
+  while (q < 4) {
+  indicesQtrs();
+  teamScore[0][q] = qtrScores[index] //populate each quarter score for team1
+
+  indicesQtrs();
+  teamScore[1][q] = qtrScores[index] //populate each quarter score for team2
+
+  indicesQtrs();
+  teamScore[2][q] = qtrScores[index] //populate each quarter score for team3
+
+  indicesQtrs();
+  teamScore[3][q] = qtrScores[index] //populate each quarter score for team4
+
+  finalScore[0] += teamScore[0][q];//adds quarter score to current final score
+  finalScore[1] += teamScore[1][q];//adds quarter score to current final score
+  finalScore[2] += teamScore[2][q];//adds quarter score to current final score
+  finalScore[3] += teamScore[3][q];//adds quarter score to current final score
+  q++;
   }
 }
-//remove trouble shooting logs after code is complete--END
 
-function rndQtrScore() {
-  index = Math.floor(Math.random() * qtrScores.length);// used to access qtrScores array (line 40) for populating team1Score & team2Score arrays
+function updateResults() {
+
+//update schedule with results HARDCODED TEMPORARILY
+
+  scoreByQtr();
+
+  document.querySelector("#week"+simWeek+"-1").textContent = league[schedule[simWeek][0]][0]+sp+finalScore[schedule[simWeek][0]]+" - "+league[schedule[simWeek][1]][0]+sp+finalScore[schedule[simWeek][1]];
+  document.querySelector("#week"+simWeek+"-2").textContent = league[schedule[simWeek][2]][0]+sp+finalScore[schedule[simWeek][2]]+" - "+league[schedule[simWeek][3]][0]+sp+finalScore[schedule[simWeek][3]];
+  
+  console.log("finalScore[0] : " + finalScore[0]);
+  console.log("finalScore[1] : " + finalScore[1]);
+  console.log("finalScore[2] : " + finalScore[2]);
+  console.log("finalScore[3] : " + finalScore[3]);
+  console.log("finalScore : " + finalScore);
+  console.log("teamScore : " + teamScore);
+
 }
-
-scoreByQtr();
-
-console.log("finalScore1 : " + finalScore1)
-console.log("finalScore2 : " + finalScore2)
-
-function  gameResults(){
-  console.log("gameResults()");
-  console.log("simWeek: " + simWeek);
+  
+function reset() {
+  teamScore = [
+    [ 0, 0, 0, 0],
+    [ 0, 0, 0, 0],
+    [ 0, 0, 0, 0],
+    [ 0, 0, 0, 0],
+    ];
+  
+    simWeek++;
 
 }
-  //Log gameResults
-gameResults();
-
-
-//Standings
+//Standings initialized from array
 let c = 0;
+//create variabless for document.getElementById("name"+c) etc.
 while (c < 4) {
   pct(league[c][1], league[c][2], league[c][3])
 
@@ -96,24 +155,12 @@ while (c < 4) {
   c++;
 }
 
-//Schedule
+//Schedule populated from array
 let w = 0;
-let w2 = 1
+// let w2 = 0
 while (w < 6) {
-document.getElementById("week"+w2+"-1").textContent = league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
-document.getElementById("week"+w2+"-2").textContent = league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
+document.getElementById("week"+w+"-1").textContent = league[schedule[w][0]][0]+sp+"@"+sp+league[schedule[w][1]][0];
+document.getElementById("week"+w+"-2").textContent = league[schedule[w][2]][0]+sp+"@"+sp+league[schedule[w][3]][0];
 w++;
-w2++;
+// w2++;
 }
-
-//output league array to console
-console.log(sp);
-console.log(sp);
-console.log("League Array");
-console.table(league);
-
-//output schedule array to console
-console.log(sp);
-console.log(sp);
-console.log("Schedule Array");
-console.table(schedule);

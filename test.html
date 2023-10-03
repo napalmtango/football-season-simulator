@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript HTML DOM</h2>
+<h3>Replace an HTML Element.</h3>
+
+<div id="div1">
+<p id="oldPElement">This is a paragraph.</p>
+<p id="p2">This is a paragraph.</p>
+</div>
+
+<script>
+const parentDiv1 = document.getElementById("div1");
+
+const oldPElement = document.getElementById("oldPElement");
+
+const button = document.createElement("p");
+const newTextNode = document.createTextNode("This is new .");
+
+button.appendChild(newTextNode);
+
+
+parentDiv1.replaceChild(button,oldPElement);
+</script>
+
+</body>
+</html>

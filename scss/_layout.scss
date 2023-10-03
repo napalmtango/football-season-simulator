@@ -7,3 +7,18 @@
   // font-stretch: ultra-condensed;
   // font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded|extra-expanded|ultra-expanded|initial|inherit;
 }
+.wk-subhead-flex {
+  display: flex;
+  gap: .7em;
+}
+button {
+  background-color: $bg-color-light;
+  border: 0;
+  padding: 0 .5em;
+  font-size: .7rem;
+  border-radius: 4px;
+  color: white;
+}
+.ltr-spc-small {
+  letter-spacing: .2px;
+}

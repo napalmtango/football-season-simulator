@@ -49,11 +49,33 @@ h2 {
   text-align: right;
 }
 
+.ltr-spc-small {
+  letter-spacing: 0.2px;
+}
+
 .standings {
   display: grid;
   column-gap: 1ch;
   align-items: center;
   grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.wk-subhead-flex {
+  display: flex;
+  gap: 0.7em;
+}
+
+button {
+  background-color: hsl(120, 90%, 33%);
+  border: 0;
+  padding: 0 0.5em;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  color: white;
+}
+
+.ltr-spc-small {
+  letter-spacing: 0.2px;
 }
 
 body {
