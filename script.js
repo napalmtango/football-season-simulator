@@ -17,7 +17,15 @@ const schedule = [
 
 let simWeek = 0;
 const sp = " ";
-let index = 0
+let index = 0;
+
+let tempWon = [0, 0, 0, 0];
+let tempLost = [0, 0, 0, 0];
+let tempTied = [0, 0, 0, 0];
+
+console.log("#btn-container"+simWeek)
+
+// document.querySelector("#btn-container")let  btnContainerEl = ;
 
 
 //Function declarations
@@ -25,7 +33,7 @@ let index = 0
 //Win Percent function
 function pct(wins, losses, ties) {
   let gamesPlayed = wins+losses+ties;
-  if (gamesPlayed === 0){gamesPlayed = 1};// In order to not receive NaN from dividing wins + ties/2 by zero (variable named gamesPlayed in line 30.)
+  if (gamesPlayed === 0){gamesPlayed = 1};// In order to not receive NaN from dividing wins + ties/2 by zero (variable named gamesPlayed in line 31.)
   tempPctVar = (wins+ties/2)/gamesPlayed;
   tempPctVar = tempPctVar.toFixed(3);
   if (tempPctVar < 1) {
@@ -33,6 +41,21 @@ function pct(wins, losses, ties) {
     tempPctVar = tempPctVar.replace("0", "");
     };
   }
+
+//removeButton function, dynamiclly removes button after week results are updated
+function removeBtn() {
+  document.querySelector("#btn-container"+simWeek).innerHTML = ""  
+}
+
+//insertButton function, dynamiclly inserts button for each week
+function insertBtn() {
+
+  document.querySelector("#btn-container"+simWeek).innerHTML = "<button class = 'ltr-spc-small' onclick='weekResults()'>SIMULATE</button>"  
+}
+
+
+
+insertBtn()
 
 //Game results functions
 
@@ -46,13 +69,14 @@ let teamScore = [
 [ 0, 0, 0, 0],
 [ 0, 0, 0, 0],
 [ 0, 0, 0, 0],
-]
-const team1Score = [ 0, 0, 0, 0];
-const team2Score = [ 0, 0, 0, 0];
-const team3Score = [ 0, 0, 0, 0];
-const team4Score = [ 0, 0, 0, 0];
+];
 
-const finalScore = [ 0, 0, 0, 0];
+let team1Score = [ 0, 0, 0, 0];
+let team2Score = [ 0, 0, 0, 0];
+let team3Score = [ 0, 0, 0, 0];
+let team4Score = [ 0, 0, 0, 0];
+
+let finalScore = [ 0, 0, 0, 0];
 let finalScore1 = 0;
 let finalScore2 = 0;
 let finalScore3 = 0;
@@ -76,9 +100,14 @@ console.table(schedule);
 // Function called from onclick event
 function  weekResults(){
 
-  console.log("simWeek: " + simWeek);//remove
-  updateResults();
+  updateSchedule();
+  updateStandings();
+  removeBtn();
   reset();
+  simWeek++;
+  if (simWeek === 6){simWeek = 0}
+  insertBtn();
+
 }
 
 
@@ -102,41 +131,46 @@ function scoreByQtr(){
   indicesQtrs();
   teamScore[3][q] = qtrScores[index] //populate each quarter score for team4
 
-  finalScore[0] += teamScore[0][q];//adds quarter score to current final score
-  finalScore[1] += teamScore[1][q];//adds quarter score to current final score
-  finalScore[2] += teamScore[2][q];//adds quarter score to current final score
-  finalScore[3] += teamScore[3][q];//adds quarter score to current final score
+  finalScore[schedule[simWeek][0]] += teamScore[0][q];//adds quarter score to current final score
+  finalScore[schedule[simWeek][1]] += teamScore[1][q];//adds quarter score to current final score
+  finalScore[schedule[simWeek][2]] += teamScore[2][q];//adds quarter score to current final score
+  finalScore[schedule[simWeek][3]] += teamScore[3][q];//adds quarter score to current final score
   q++;
   }
 }
 
-function updateResults() {
+function updateSchedule() {
 
-//update schedule with results HARDCODED TEMPORARILY
+//update schedule with results
 
   scoreByQtr();
 
   document.querySelector("#week"+simWeek+"-1").textContent = league[schedule[simWeek][0]][0]+sp+finalScore[schedule[simWeek][0]]+" - "+league[schedule[simWeek][1]][0]+sp+finalScore[schedule[simWeek][1]];
   document.querySelector("#week"+simWeek+"-2").textContent = league[schedule[simWeek][2]][0]+sp+finalScore[schedule[simWeek][2]]+" - "+league[schedule[simWeek][3]][0]+sp+finalScore[schedule[simWeek][3]];
   
-  console.log("finalScore[0] : " + finalScore[0]);
-  console.log("finalScore[1] : " + finalScore[1]);
-  console.log("finalScore[2] : " + finalScore[2]);
-  console.log("finalScore[3] : " + finalScore[3]);
+  console.log("finalScore["+[schedule[simWeek][0]]+"] : " + finalScore[schedule[simWeek][0]]);
+  console.log("finalScore["+[schedule[simWeek][1]]+"] : " + finalScore[schedule[simWeek][1]]);
+  console.log("finalScore["+[schedule[simWeek][2]]+"] : " + finalScore[schedule[simWeek][2]]);
+  console.log("finalScore["+[schedule[simWeek][3]]+"] : " + finalScore[schedule[simWeek][3]]);
   console.log("finalScore : " + finalScore);
   console.log("teamScore : " + teamScore);
 
 }
+
+function updateStandings() {
+  console.log("updateStandings()")
+}
   
 function reset() {
+  finalScore = [ 0, 0, 0, 0];
+
   teamScore = [
     [ 0, 0, 0, 0],
     [ 0, 0, 0, 0],
     [ 0, 0, 0, 0],
     [ 0, 0, 0, 0],
     ];
-  
-    simWeek++;
+    q = 0;
 
 }
 //Standings initialized from array
