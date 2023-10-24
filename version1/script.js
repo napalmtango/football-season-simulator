@@ -1,3 +1,6 @@
+$(function() {
+  // Selecting Elements
+  $('h1').html('<em>Hello there</em> <a href = "#>/a>">jQuery!');
 const testOutput = document.querySelector("#testOutput");
 
 function percent( w, l, t ) {
