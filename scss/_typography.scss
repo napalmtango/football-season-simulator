@@ -21,16 +21,17 @@ body {
 }
 h1 {
   font-size: $h1small;
-  color: gold;
+  color: white;
   margin: 0em 0em .9em;
   letter-spacing: .75px;
   text-align: center;
   background-color: $bg-color-dark;
+  border-radius: 10px;
 }
 
 h2 {
   font-size: $h2small;
-  color: gold;
+  color: orange;
   margin-bottom: .3em;
   letter-spacing: .75px;
 

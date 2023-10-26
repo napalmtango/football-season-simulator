@@ -20,16 +20,17 @@ body {
 
 h1 {
   font-size: 1.8rem;
-  color: gold;
+  color: white;
   margin: 0em 0em 0.9em;
   letter-spacing: 0.75px;
   text-align: center;
-  background-color: darkgreen;
+  background-color: hsl(21, 47%, 15%);
+  border-radius: 10px;
 }
 
 h2 {
   font-size: 1.2rem;
-  color: gold;
+  color: orange;
   margin-bottom: 0.3em;
   letter-spacing: 0.75px;
 }
@@ -70,7 +71,7 @@ h2 {
 }
 
 button {
-  background-color: hsl(120, 90%, 33%);
+  background-color: hsl(21, 47%, 15%);
   border: 0;
   padding: 0.1em 0.5em;
   font-size: 0.7rem;
@@ -84,7 +85,7 @@ button {
 
 body {
   padding: 0.6em;
-  background-color: green;
+  background-color: hsl(22, 40%, 26%);
 }
 
 h1 {

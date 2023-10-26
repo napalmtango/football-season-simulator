@@ -1,10 +1,10 @@
 //Global variable declarations
-const league = [
-  ["Rams", 0, 0, 0, 0, 0],
-  ["49ers", 0, 0, 0, 0, 0],
-  ["Seahawks", 0, 0, 0, 0, 0],
-  ["Cardinals", 0, 0, 0, 0, 0],
-];
+// const league = [
+//   ["Rams", 0, 0, 0, 0, 0],
+//   ["49ers", 0, 0, 0, 0, 0],
+//   ["Seahawks", 0, 0, 0, 0, 0],
+//   ["Cardinals", 0, 0, 0, 0, 0],
+// ];
 
 const schedule = [
   [1, 0, 3, 2],
@@ -31,16 +31,16 @@ console.log("#btn-container"+simWeek)
 //Function declarations
 
 //Win Percent function
-function pct(wins, losses, ties) {
-  let gamesPlayed = wins+losses+ties;
-  if (gamesPlayed === 0){gamesPlayed = 1};// In order to not receive NaN from dividing wins + ties/2 by zero (variable named gamesPlayed in line 31.)
-  tempPctVar = (wins+ties/2)/gamesPlayed;
-  tempPctVar = tempPctVar.toFixed(3);
-  if (tempPctVar < 1) {
-    tempPctVar = tempPctVar.toString();
-    tempPctVar = tempPctVar.replace("0", "");
-    };
-  }
+// function pct(wins, losses, ties) {
+//   let gamesPlayed = wins+losses+ties;
+//   if (gamesPlayed === 0){gamesPlayed = 1};// In order to not receive NaN from dividing wins + ties/2 by zero (variable named gamesPlayed in line 31.)
+//   tempPctVar = (wins+ties/2)/gamesPlayed;
+//   tempPctVar = tempPctVar.toFixed(3);
+//   if (tempPctVar < 1) {
+//     tempPctVar = tempPctVar.toString();
+//     tempPctVar = tempPctVar.replace("0", "");
+//     };
+//   }
 
 //removeButton function, dynamiclly removes button after week results are updated
 function removeBtn() {
