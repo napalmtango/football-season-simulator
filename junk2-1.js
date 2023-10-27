@@ -75,7 +75,7 @@ $(`#btn-container${5}`).click(function() {
 let q = 0;
 let t = 0;
 
-const qtrScores = [ 0, 0, 0, 0, 3, 3, 6, 7, 7, 7, 10, 10, 14, 14];
+let qtrScores = [ 0, 0, 0, 0, 3, 3, 6, 7, 7, 7, 10, 10, 14, 14];
 let teamScores = [ 0, 0, 0, 0];
 
 function rndScores() {
@@ -96,9 +96,43 @@ function updateSchedule() {
   
 }
 
-function sortStandings() {
-  console.log("sortStandings()");
+//Sort standings array by winning percentage
+//create working arrays to use in sort
+let workingPct =  [];
+let control = [0, 1, 2, 3];
+
+function workingArrays() {
+ for (let t = 0; t < 4; t++) {
+   workingPct[t] = standings[t].record[3]
+   console.log(`sim week: ${simWeek}. pass: ${t}. working pct: ${workingPct}`);
+ }
 }
+// end--------------------------------
+
+
+//sort by winning percentage------------
+function sortByPct() {
+  let len = workingPct.length;
+
+  // bubble sort
+  for (let c = 0; c < 5-c; c++) {
+    for (let i = 0; i < len-c-1; i++) {
+
+      //swap value pairs
+      if (workingPct[i] < workingPct[i+1]) {
+        let temp = workingPct[i];
+        workingPct[i] = workingPct[i+1];
+        workingPct[i+1] = temp;
+
+        // swaps are mirrored in control[]
+        let tempc = control[i];
+        control[i] = control[i+1];
+        control[i+1] = tempc;
+      } 
+    }
+  }
+}
+// end----------------------------------
 
 
 // Function called from simulation button onclick event
@@ -114,40 +148,62 @@ function  weekResults(){
 
 function updateStandings() {
   let a = 0; let b = 1;
-for (let i = 0; i < 2; i++) {
-    if (teamScores[a] > teamScores[b]) {
-      console.log(`${standings[schedule[simWeek][a]].team} win`);
-      standings[schedule[simWeek][a]].record[0] += 1; standings[schedule[simWeek][b]].record[1] += 1;
-    }
-  
-    else if (teamScores[a] < teamScores[b]) {
-      console.log(`${standings[schedule[simWeek][b]].team} win`);
-      standings[schedule[simWeek][b]].record[0] += 1; standings[schedule[simWeek][a]].record[1] += 1;
-    }
-  
-    if (teamScores[a] === teamScores[b]) {
-      console.log(`Game is a tie`);
-      standings[schedule[simWeek][b]].record[2] += 1; standings[schedule[simWeek][a]].record[2] += 1;
-    }
-  
-    standings[schedule[simWeek][a]].record[4] += teamScores[a]; 
-    standings[schedule[simWeek][a]].record[5] += teamScores[b];
-    standings[schedule[simWeek][b]].record[4] += teamScores[b]; 
-    standings[schedule[simWeek][b]].record[5] += teamScores[a];
-    a = 2; b = 3;
-}
+  for (let i = 0; i < 2; i++) {
+      if (teamScores[a] > teamScores[b]) {
+        console.log(`${standings[schedule[simWeek][a]].team} win`);
+        standings[schedule[simWeek][a]].record[0] += 1; standings[schedule[simWeek][b]].record[1] += 1;
+      }
+    
+      else if (teamScores[a] < teamScores[b]) {
+        console.log(`${standings[schedule[simWeek][b]].team} win`);
+        standings[schedule[simWeek][b]].record[0] += 1; standings[schedule[simWeek][a]].record[1] += 1;
+      }
+    
+      if (teamScores[a] === teamScores[b]) {
+        console.log(`Game is a tie`);
+        standings[schedule[simWeek][b]].record[2] += 1; standings[schedule[simWeek][a]].record[2] += 1;
+      }
+    
+      standings[schedule[simWeek][a]].record[4] += teamScores[a]; 
+      standings[schedule[simWeek][a]].record[5] += teamScores[b];
+      standings[schedule[simWeek][b]].record[4] += teamScores[b]; 
+      standings[schedule[simWeek][b]].record[5] += teamScores[a];
+      a = 2; b = 3;
+  }
+
   calcPct();
+  workingArrays();
+  sortByPct()
+
+  
+
+  //populate standings from array standings[]
+    for (let i = 0; i < 4; i++) {
+    $(`#name${i}`).html(standings[control[i]].team);
+    $(`#won${i}`).html(standings[control[i]].record[0]);
+    $(`#lost${i}`).html(standings[control[i]].record[1]);
+    $(`#tied${i}`).html(standings[control[i]].record[2]);
+    $(`#pct${i}`).html(standings[control[i]].record[3]);
+    $(`#ptsfor${i}`).html(standings[control[i]].record[4]);
+    $(`#ptsag${i}`).html(standings[control[i]].record[5]);
+  }
+
+// end----------------------------------
 
   // log records
-  for (let i = 0; i < 4; i++) {
-  console.log(`${standings[schedule[simWeek][i]].team} ${standings[schedule[simWeek][i]].record[0]} - ${standings[schedule[simWeek][i]].record[1]} - ${standings[schedule[simWeek][i]].record[2]}   ${standings[schedule[simWeek][i]].record[3]}   ${standings[schedule[simWeek][i]].record[4]}   ${standings[schedule[simWeek][i]].record[5]}`);
-  }
+  // for (let i = 0; i < 4; i++) {
+  // console.log(`${standings[schedule[simWeek][i]].team} ${standings[schedule[simWeek][i]].record[0]} - ${standings[schedule[simWeek][i]].record[1]} - ${standings[schedule[simWeek][i]].record[2]}   ${standings[schedule[simWeek][i]].record[3]}   ${standings[schedule[simWeek][i]].record[4]}   ${standings[schedule[simWeek][i]].record[5]}`);
+  // }
 }
 
 
+  
 function reset() {
   console.log("reset()")
   teamScores = [0, 0, 0, 0];
+  control = [0, 1, 2, 3];
+  workingPct =  [];
+
   //   q = 0;
 
 }

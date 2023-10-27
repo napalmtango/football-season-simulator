@@ -35,7 +35,7 @@ function calculatePct( w, l, t ) {
 }
 // end--------------------------------
 
-
+//Sort standings array by winning percentage
 //create working arrays to use in sort
 const workingPct =  [];
 const control = [0, 1, 2, 3];
