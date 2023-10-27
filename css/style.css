@@ -61,9 +61,34 @@ h2 {
   grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+.container {
+  max-width: 475px;
+  margin: 0 auto;
+}
+
 .wk-subhead-flex {
   display: flex;
   gap: 0.7em;
+}
+
+#btn-container1 {
+  display: none;
+}
+
+#btn-container2 {
+  display: none;
+}
+
+#btn-container3 {
+  display: none;
+}
+
+#btn-container4 {
+  display: none;
+}
+
+#btn-container5 {
+  display: none;
 }
 
 .btn-cont-margin {

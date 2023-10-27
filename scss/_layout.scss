@@ -1,4 +1,6 @@
 
+
+
 .standings {
   display: grid;
   column-gap: 1ch;
@@ -7,10 +9,36 @@
   // font-stretch: ultra-condensed;
   // font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded|extra-expanded|ultra-expanded|initial|inherit;
 }
+
+.container {
+  max-width: 475px;
+  margin: 0 auto;
+}
 .wk-subhead-flex {
   display: flex;
   gap: .7em;
 }
+
+#btn-container1 {
+  display: none;
+}
+
+#btn-container2 {
+  display: none;
+}
+
+#btn-container3 {
+  display: none;
+}
+
+#btn-container4 {
+  display: none;
+}
+
+#btn-container5 {
+  display: none;
+}
+
 .btn-cont-margin {
   margin-top: -.2em;
 }
