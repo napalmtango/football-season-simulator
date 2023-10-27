@@ -19,17 +19,18 @@ body {
 }
 
 h1 {
-  font-size: 1.8rem;
-  color: gold;
+  font-size: 1.6rem;
+  color: white;
   margin: 0em 0em 0.9em;
   letter-spacing: 0.75px;
   text-align: center;
-  background-color: darkgreen;
+  background-color: hsl(21, 47%, 15%);
+  border-radius: 10px;
 }
 
 h2 {
-  font-size: 1.2rem;
-  color: gold;
+  font-size: 1.1rem;
+  color: orange;
   margin-bottom: 0.3em;
   letter-spacing: 0.75px;
 }
@@ -60,9 +61,34 @@ h2 {
   grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+.container {
+  max-width: 475px;
+  margin: 0 auto;
+}
+
 .wk-subhead-flex {
   display: flex;
   gap: 0.7em;
+}
+
+#btn-container1 {
+  display: none;
+}
+
+#btn-container2 {
+  display: none;
+}
+
+#btn-container3 {
+  display: none;
+}
+
+#btn-container4 {
+  display: none;
+}
+
+#btn-container5 {
+  display: none;
 }
 
 .btn-cont-margin {
@@ -70,7 +96,7 @@ h2 {
 }
 
 button {
-  background-color: hsl(120, 90%, 33%);
+  background-color: hsl(21, 47%, 15%);
   border: 0;
   padding: 0.1em 0.5em;
   font-size: 0.7rem;
@@ -84,13 +110,13 @@ button {
 
 body {
   padding: 0.6em;
-  background-color: green;
+  background-color: hsl(22, 40%, 26%);
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }/*# sourceMappingURL=style.css.map */

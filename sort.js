@@ -1,21 +1,26 @@
-const league = [{team: "Rams", record: [1, 2, 1, 0, 80, 90]},
+const standings = [{team: "Rams", record: [1, 2, 1, 0, 80, 90]},
                 {team: "49ers", record: [3, 1, 0, 0, 100, 70]},
                 {team: "Seahawks", record: [1, 3, 0, 0, 70, 100]},
                 {team: "Cardinals", record: [2, 1, 1, 0, 90, 80]}];
 
-let pct = 0;
-let tm = 0
-let row = 0
+// const standings = [{team: "Rams", record: [0, 0, 0, 0, 0, 0]},
+//                 {team: "49ers", record: [0, 0, 0, 0, 0, 0]},
+//                 {team: "Seahawks", record: [0, 0, 0, 0, 0, 0]},
+//                 {team: "Cardinals", record: [0, 0, 0, 0, 0, 0]}];
 
+let pct = 0;
+
+
+
+//calculate winning percentage---------
 function updatePct() {
   for (let t = 0; t < 4; t++) {
-    calculatePct(league[t].record[0], league[t].record[1], league[t].record[2]);
-    league[t].record[3] = pct;
+    calculatePct(standings[t].record[0], standings[t].record[1], standings[t].record[2]);
+    standings[t].record[3] = pct;
   }
 }
 
 
-//calculate winning percentage---------
 function calculatePct( w, l, t ) {
   let gamesPlayed = w + l + t;
   if (gamesPlayed === 0){gamesPlayed = 1}
@@ -28,38 +33,28 @@ function calculatePct( w, l, t ) {
     pct = pct.replace("0", "");
     };
 }
-// end----------------------------------
+// end--------------------------------
 
+//Sort standings array by winning percentage
 //create working arrays to use in sort
-let workingPct =  [];
-let control = [0, 1, 2, 3];
+const workingPct =  [];
+const control = [0, 1, 2, 3];
 
 function workingArrays() {
-// create workingPct array
-//  console.log("create workingPct array");
  for (let t = 0; t < 4; t++) {
-   workingPct[t] = league[t].record[3]
+   workingPct[t] = standings[t].record[3]
  }
 }
+// end--------------------------------
 
 
 //sort by winning percentage------------
-let lastIndex = 4;
-let x = 0 //sort iteration flag
-
 function sortByPct() {
-  // console.log(`workingPct = ${workingPct}`);
-  // console.log(`control array = ${control}`);
   let len = workingPct.length;
-  console.log(len);
-  console.log(workingPct);
+
   // bubble sort
   for (let c = 0; c < 4-c; c++) {
     for (let i = 0; i < len-c-1; i++) {
-      console.log(`\nsortByPct iteration${i}`)
-      console.log(`workingPct = ${workingPct}`);
-      console.log(`i = ${i}`)
-      console.log(`c = ${c}`)
 
       //swap value pairs
       if (workingPct[i] < workingPct[i+1]) {
@@ -67,65 +62,39 @@ function sortByPct() {
         workingPct[i] = workingPct[i+1];
         workingPct[i+1] = temp;
 
-        console.log(`workingPct = ${workingPct}`);
-
+        // swaps are mirrored in control[]
         let tempc = control[i];
         control[i] = control[i+1];
         control[i+1] = tempc;
-
-        console.log(`control = ${control}`);
       } 
     }
   }
 }
 // end----------------------------------
 
-function populate(tm) {
-  console.log(`tm == ${tm}`);
 
-  $(`#name${row}`).html(league[tm].team);
-  $(`#won${row}`).html(league[tm].record[0]);
-  $(`#lost${row}`).html(league[tm].record[1]);
-  $(`#tied${row}`).html(league[tm].record[2]);
-  $(`#pct${row}`).html(league[tm].record[3]);
-  $(`#ptsfor${row}`).html(league[tm].record[4]);
-  $(`#ptsag${row}`).html(league[tm].record[5]);
-  row ++;
-}
 
-//populate standings from array league[]
+//populate standings from array standings[]
 function updateStandings() {
   for (let i = 0; i < 4; i++) {
-    // tm = control[i];
-    populate(control[i]);
+    $(`#name${i}`).html(standings[control[i]].team);
+    $(`#won${i}`).html(standings[control[i]].record[0]);
+    $(`#lost${i}`).html(standings[control[i]].record[1]);
+    $(`#tied${i}`).html(standings[control[i]].record[2]);
+    $(`#pct${i}`).html(standings[control[i]].record[3]);
+    $(`#ptsfor${i}`).html(standings[control[i]].record[4]);
+    $(`#ptsag${i}`).html(standings[control[i]].record[5]);
   }
 }
 // end----------------------------------
 
-
-
-// function calls-----------------------
-updatePct();
-workingArrays();
-sortByPct();
-updateStandings();
-
-
+$("#calc").click(function() {
+  updatePct();
+  workingArrays();
+  sortByPct();
+  updateStandings();
+});
 // end----------------------------------
-
-
-//debug--------------------
-// console.log(league[0].team);
-// console.log(league[0].record[0]);
-// console.log(league[0].record[1]);
-// console.log(league[0].record[2]);
-// console.log(league[0].record[3]); 
-// console.table(league);
-
-// if (league[0].record[3] < league[1].record[3]) {
-//   console.log("it works")
-// }; 
-
 
 
 
