@@ -145,7 +145,6 @@ for (let i = 0; i < 2; i++) {
 }
 
 
-  
 function reset() {
   console.log("reset()")
   teamScores = [0, 0, 0, 0];

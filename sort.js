@@ -20,6 +20,7 @@ function updatePct() {
   }
 }
 
+
 function calculatePct( w, l, t ) {
   let gamesPlayed = w + l + t;
   if (gamesPlayed === 0){gamesPlayed = 1}
