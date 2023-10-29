@@ -1,8 +1,11 @@
+//array conaing data for standings, also source used for grabbing team names
 const standings = [{team: "Rams", record: [0, 0, 0, 0, 0, 0]},
                 {team: "49ers", record: [0, 0, 0, 0, 0, 0]},
                 {team: "Seahawks", record: [0, 0, 0, 0, 0, 0]},
                 {team: "Cardinals", record: [0, 0, 0, 0, 0, 0]}];
 
+//array used to hold indices which will be used to populate schedule, 
+// 6 x 4  : six weeks and four teams              
 const schedule = [
   [1, 0, 3, 2],
   [0, 2, 3, 1],
@@ -14,7 +17,7 @@ const schedule = [
 
 let simWeek = 0;
 
-//Win Percent function
+//Calculates winning percentage
 function calcPct() {
   for (let i = 0; i < 4; i++) {
     let pct = 0;
@@ -39,7 +42,7 @@ function calcPct() {
 $(`#btn-container${0}`).click(function() {
   $(`#btn-container${0}`).slideUp( 600 );
   $(`#btn-container${1}`).slideDown( 800);
-  weekResults();
+  weekResults();//Simulation starts with this function
 }).one();  
 
 $(`#btn-container${1}`).click(function() {
@@ -71,13 +74,14 @@ $(`#btn-container${5}`).click(function() {
   weekResults();
 });  
 
-
+//variables used in creating random scores to determine results of games,
+//calculated by quarter to allow for future functionality 
 let q = 0;
 let t = 0;
-
 let qtrScores = [ 0, 0, 0, 0, 3, 3, 6, 7, 7, 7, 10, 10, 14, 14];
 let teamScores = [ 0, 0, 0, 0];
 
+// function creates scores, iterates 16 times in all, 4 quarters for each of 4 teams
 function rndScores() {
   for (let t = 0; t < 4; t++) {
     for (let q = 0; q < 4; q++) {
@@ -97,7 +101,9 @@ function updateSchedule() {
 }
 
 //Sort standings array by winning percentage
-//create working arrays to use in sort
+//initialize working arrays to use in sort,
+//control[] array is sorted mirroring the bubble sort by won-loss percentage and  
+//will be used as indices for updating the array containing the standings data
 let workingPct =  [];
 let control = [0, 1, 2, 3];
 
@@ -107,7 +113,6 @@ function workingArrays() {
    console.log(`sim week: ${simWeek}. pass: ${t}. working pct: ${workingPct}`);
  }
 }
-// end--------------------------------
 
 
 //sort by winning percentage------------
@@ -142,13 +147,15 @@ function  weekResults(){
   updateStandings();
   reset();
   simWeek++;
-  if (simWeek === 6){simWeek = 0}
+  if (simWeek === 6){simWeek = 0}//hides simulation button after final week of season is computed
 
 }
 
+//this ieates twice, once for each game in given week
 function updateStandings() {
   let a = 0; let b = 1;
   for (let i = 0; i < 2; i++) {
+    // if and else if determines which team won
       if (teamScores[a] > teamScores[b]) {
         console.log(`${standings[schedule[simWeek][a]].team} win`);
         standings[schedule[simWeek][a]].record[0] += 1; standings[schedule[simWeek][b]].record[1] += 1;
@@ -159,11 +166,13 @@ function updateStandings() {
         standings[schedule[simWeek][b]].record[0] += 1; standings[schedule[simWeek][a]].record[1] += 1;
       }
     
+      //checks for ties
       if (teamScores[a] === teamScores[b]) {
         console.log(`Game is a tie`);
         standings[schedule[simWeek][b]].record[2] += 1; standings[schedule[simWeek][a]].record[2] += 1;
       }
-    
+      
+      //updates points for, and points against for each pair of teams
       standings[schedule[simWeek][a]].record[4] += teamScores[a]; 
       standings[schedule[simWeek][a]].record[5] += teamScores[b];
       standings[schedule[simWeek][b]].record[4] += teamScores[b]; 
@@ -171,13 +180,15 @@ function updateStandings() {
       a = 2; b = 3;
   }
 
+  //function calls for calculating winning percentage, creating working arrays for sort and 
+  //bubble sort
   calcPct();
   workingArrays();
   sortByPct()
 
   
 
-  //populate standings from array standings[]
+  //populate on screen standings from newly updated standings[] array
     for (let i = 0; i < 4; i++) {
     $(`#name${i}`).html(standings[control[i]].team);
     $(`#won${i}`).html(standings[control[i]].record[0]);
@@ -188,7 +199,6 @@ function updateStandings() {
     $(`#ptsag${i}`).html(standings[control[i]].record[5]);
   }
 
-// end----------------------------------
 
   // log records
   // for (let i = 0; i < 4; i++) {
@@ -197,7 +207,7 @@ function updateStandings() {
 }
 
 
-  
+//resets arrays so following week will run correctly 
 function reset() {
   console.log("reset()")
   teamScores = [0, 0, 0, 0];
