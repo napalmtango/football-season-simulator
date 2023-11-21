@@ -1,6 +1,3 @@
-
-
-
 .standings {
   display: grid;
   column-gap: 1ch;
@@ -16,7 +13,7 @@
 }
 .wk-subhead-flex {
   display: flex;
-  gap: .7em;
+  gap: 0.7em;
 }
 
 #btn-container1 {
@@ -40,16 +37,21 @@
 }
 
 .btn-cont-margin {
-  margin-top: -.2em;
+  margin-top: -0.2em;
 }
 button {
   background-color: $bg-color-dark;
-  border: 0;
-  padding: .1em .5em;
-  font-size: .7rem;
-  border-radius: 4px;
   color: white;
+  border: 0;
+  padding: 0.1em 0.5em;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
 .ltr-spc-small {
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
+}
+
+#theme {
+  margin: 1rem 0;
 }

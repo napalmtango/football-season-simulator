@@ -11,6 +11,63 @@
   box-sizing: border-box;
 }
 
+.pigskin {
+  background-color: hsl(22, 40%, 26%);
+  color: white;
+}
+
+.nfl {
+  background-color: aliceblue;
+  color: blue;
+}
+
+.turf {
+  background-color: green;
+  color: white;
+}
+
+.h1pigskin {
+  background-color: hsl(21, 47%, 15%);
+  color: white;
+}
+
+.h1nfl {
+  background-color: blue;
+  color: aliceblue;
+}
+
+.h1turf {
+  background-color: darkgreen;
+  color: gold;
+}
+
+.h2pigskin {
+  color: orange;
+}
+
+.h2nfl {
+  color: red;
+}
+
+.h2turf {
+  color: gold;
+}
+
+.btnpigskin {
+  background-color: hsl(21, 47%, 15%);
+  color: white;
+}
+
+.btnnfl {
+  background-color: blue;
+  color: aliceblue;
+}
+
+.btnturf {
+  background-color: darkgreen;
+  color: gold;
+}
+
 body {
   font-family: "Anek Bangla", sans-serif;
   color: #fff;
@@ -21,7 +78,7 @@ body {
 h1 {
   font-size: 1.6rem;
   color: white;
-  margin: 0em 0em 0.9em;
+  margin: 0.15em 0em 0.9em;
   letter-spacing: 0.75px;
   text-align: center;
   background-color: hsl(21, 47%, 15%);
@@ -97,15 +154,20 @@ h2 {
 
 button {
   background-color: hsl(21, 47%, 15%);
+  color: white;
   border: 0;
   padding: 0.1em 0.5em;
   font-size: 0.7rem;
   border-radius: 4px;
-  color: white;
+  cursor: pointer;
 }
 
 .ltr-spc-small {
   letter-spacing: 0.2px;
+}
+
+#theme {
+  margin: 1rem 0;
 }
 
 body {
