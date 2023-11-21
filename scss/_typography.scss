@@ -17,13 +17,13 @@ body {
   font-family: 'Anek Bangla', sans-serif;
   color: #fff;
   line-height: 1.25;
-  letter-spacing: .35;
+  letter-spacing: 0.35;
 }
 h1 {
   font-size: $h1small;
   color: white;
-  margin: 0em 0em .9em;
-  letter-spacing: .75px;
+  margin: 0.15em 0em 0.9em;
+  letter-spacing: 0.75px;
   text-align: center;
   background-color: $bg-color-dark;
   border-radius: 10px;
@@ -32,15 +32,13 @@ h1 {
 h2 {
   font-size: $h2small;
   color: orange;
-  margin-bottom: .3em;
-  letter-spacing: .75px;
-
-
+  margin-bottom: 0.3em;
+  letter-spacing: 0.75px;
 }
 .subhead {
-  font-size: .78rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  margin-bottom: .2em;
+  margin-bottom: 0.2em;
   letter-spacing: 1px;
 }
 
@@ -52,5 +50,5 @@ h2 {
   text-align: right;
 }
 .ltr-spc-small {
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 }
