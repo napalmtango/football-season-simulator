@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football Season Simulator</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <!--------------------------------->
+    <!-- Templates -->
+    <!--------------------------------->
+
+    <!-- Panel template -->
+    <template id="panel-template">
+      <div id="team-panel" class="team-panel">
+        <button id="panel-close-btn" class="panel-close-btn">&times;</button>
+          <div class="panel-header">
+            <span id="team-name"></span>
+            <span id="pwr-rating" class="pwr-rating"></span>
+          </div>
+          <div id="team-schedule" class="team-schedule">
+            <div class="panel-subhead">Schedule</div>
+            <ul id="schedule-list" class="schedule-list"></ul>
+          </div>
+          <div class="ratings">Ratings</div>
+      </div>
+    </template>
+
+    <!-- List element template -->
+     <template id='list-item-template'>
+      <li>
+        <span class='team-sch-wk'></span>
+        <span class='team-sch-matchup'></span>
+        <span class='team-sch-result'></span>
+      </li>
+     </template>
+
+
+    <div class="container">
+      
+      
+      <!-- <div>
+        <span id="theme" class="subhead">Theme</span>
+        <button id="pigskin">Pigskin</button>
+        <button id="nfl">NFL</button>
+        <button id="turf">Turf</button>
+      </div> -->
+      <h1>Football Season Simulator</h1>
+      <div id='standings'>
+        <h2>Standings</h2>
+        <div id="western-division" class="standings">
+          <div class="subhead">Western Division
+          </div>
+          <div class="subhead centered">Won</div>
+          <div class="subhead centered" class="centered">Lost</div>
+          <div class="subhead centered" class="centered">Tied</div>
+          <div class="subhead right">Pct</div>
+          <div class="subhead right">Pts F</div>
+          <div class="subhead right">Pts A</div>
+  
+          <div id="West-name0"></div>
+          <div id="West-won0" class="centered">0</div>
+          <div id="West-lost0" class="centered">0</div>
+          <div id="West-tied0" class="centered">0</div>
+          <div id="West-pct0" class="right">Pct</div>
+          <div id="West-ptsfor0" class="right">0</div>
+          <div id="West-ptsag0" class="right">0</div>
+  
+          <div id="West-name1"></div>
+          <div id="West-won1" class="centered">0</div>
+          <div id="West-lost1" class="centered">0</div>
+          <div id="West-tied1" class="centered">0</div>
+          <div id="West-pct1" class="right">Pct</div>
+          <div id="West-ptsfor1" class="right">0</div>
+          <div id="West-ptsag1" class="right">0</div>
+  
+          <div id="West-name2"></div>
+          <div id="West-won2" class="centered">0</div>
+          <div id="West-lost2" class="centered">0</div>
+          <div id="West-tied2" class="centered">0</div>
+          <div id="West-pct2" class="right">Pct</div>
+          <div id="West-ptsfor2" class="right">0</div>
+          <div id="West-ptsag2" class="right">0</div>
+  
+          <div id="West-name3"></div>
+          <div id="West-won3" class="centered">0</div>
+          <div id="West-lost3" class="centered">0</div>
+          <div id="West-tied3" class="centered">0</div>
+          <div id="West-pct3" class="right">Pct</div>
+          <div id="West-ptsfor3" class="right">0</div>
+          <div id="West-ptsag3" class="right">0</div>
+        </div>
+
+        <div id="eastern-division" class="standings">
+          <div class="subhead">Eastern Division
+          </div>
+          <div class="subhead centered">Won</div>
+          <div class="subhead centered" class="centered">Lost</div>
+          <div class="subhead centered" class="centered">Tied</div>
+          <div class="subhead right">Pct</div>
+          <div class="subhead right">Pts F</div>
+          <div class="subhead right">Pts A</div>
+  
+          <div id="East-name0"></div>
+          <div id="East-won0" class="centered">0</div>
+          <div id="East-lost0" class="centered">0</div>
+          <div id="East-tied0" class="centered">0</div>
+          <div id="East-pct0" class="right">Pct</div>
+          <div id="East-ptsfor0" class="right">0</div>
+          <div id="East-ptsag0" class="right">0</div>
+  
+          <div id="East-name1"></div>
+          <div id="East-won1" class="centered">0</div>
+          <div id="East-lost1" class="centered">0</div>
+          <div id="East-tied1" class="centered">0</div>
+          <div id="East-pct1" class="right">Pct</div>
+          <div id="East-ptsfor1" class="right">0</div>
+          <div id="East-ptsag1" class="right">0</div>
+  
+          <div id="East-name2"></div>
+          <div id="East-won2" class="centered">0</div>
+          <div id="East-lost2" class="centered">0</div>
+          <div id="East-tied2" class="centered">0</div>
+          <div id="East-pct2" class="right">Pct</div>
+          <div id="East-ptsfor2" class="right">0</div>
+          <div id="East-ptsag2" class="right">0</div>
+  
+          <div id="East-name3"></div>
+          <div id="East-won3" class="centered">0</div>
+          <div id="East-lost3" class="centered">0</div>
+          <div id="East-tied3" class="centered">0</div>
+          <div id="East-pct3" class="right">Pct</div>
+          <div id="East-ptsfor3" class="right">0</div>
+          <div id="East-ptsag3" class="right">0</div>
+        </div>
+      </div>
+      <br /><br />
+
+      <div id='schedule' style='display: block;'>
+        <h2>Schedule</h2>
+        <div class="wk-subhead-flex">
+          <p class="subhead small-subhead">Week One</p>
+          <!-- <span id="btn-container0" class="btn-cont-margin"
+            ><button class="ltr-spc-small">SIMULATE</button></span
+          > -->
+        </div>
+        <div id="week0"></div>
+        
+  
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Two</p>
+        </div>
+        <div id="week1"></div>
+    
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Three</p>
+        </div>
+        <div id="week2"></div>
+
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Four</p>
+        </div>
+        <div id="week3"></div>
+
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Five</p>
+        </div>
+        <div id="week4"></div>
+
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Six</p>
+        </div>
+        <div id="week5"></div>
+
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Seven</p>
+        </div>
+        <div id="week6"></div>
+
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Eight</p>
+        </div>
+        <div id="week7"></div>
+
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Nine</p>
+        </div>
+        <div id="week8"></div>
+
+        <div class="wk-subhead-flex">
+          <p class="subhead">Week Ten</p>
+        </div>
+        <div id="week9"></div>
+        
+      </div>
+    
+      
+    <script type="module" src="main.js"></script>
+    <script src="theme.js"></script>
+  </body>
+</html>

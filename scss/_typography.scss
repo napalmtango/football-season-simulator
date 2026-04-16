@@ -35,14 +35,32 @@ h1 {
 h2 {
   font-size: $h2small;
   color: orange;
-  margin-bottom: 0.3em;
+  // margin-bottom: 0.1em;
   letter-spacing: 0.75px;
 }
 .subhead {
-  font-size: 0.78rem;
+  margin-top: 1rem;
+  font-size: 0.72em;
   font-weight: 500;
   margin-bottom: 0.2em;
-  letter-spacing: 1px;
+  color: khaki;
+  // letter-spacing: .3px;
+}
+
+.small-subhead {
+  margin: .3em 0 .3em;
+}
+
+.panel-subhead {
+  font-size: .55rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  // margin: .35rem 0 0 0;
+}
+
+.pwr-rating {
+  font-weight: 400;
+  font-size: .7rem;
 }
 
 .centered {

@@ -7,6 +7,56 @@
   // font-stretch: ultra-condensed|extra-condensed|condensed|semi-condensed|normal|semi-expanded|expanded|extra-expanded|ultra-expanded|initial|inherit;
 }
 
+.team-name {
+  cursor: pointer;
+}
+
+.team-panel {
+  width: 300px;
+  height: auto;
+  background-color: beige;
+  color: green;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  padding: 1rem;
+  border-radius: .25rem;
+  font-size: .8rem;
+}
+
+.panel-close-btn {
+ z-index: 1100;
+ position: absolute;
+ right: 6px;
+ top: 4px;
+ background-color: green;
+}
+
+.panel-header {
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+.team-schedule {
+  margin-top: .5rem;
+}
+
+.schedule-list {
+  list-style-type: none;
+}
+
+.team-sch-wk {
+  font-weight: 300;
+  font-size: .8em;
+  display: inline-block;
+  width: 2.8rem;
+}
+
+.ratings {
+  margin-top: .3rem;
+}
+
 .container {
   max-width: 475px;
   margin: 0 auto;
@@ -39,6 +89,7 @@
 .btn-cont-margin {
   margin-top: -0.2em;
 }
+
 button {
   background-color: $bg-color-dark;
   color: white;
@@ -48,6 +99,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .ltr-spc-small {
   letter-spacing: 0.2px;
 }

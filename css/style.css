@@ -85,15 +85,30 @@ h1 {
 h2 {
   font-size: 1.1rem;
   color: orange;
-  margin-bottom: 0.3em;
   letter-spacing: 0.75px;
 }
 
 .subhead {
-  font-size: 0.78rem;
+  margin-top: 1rem;
+  font-size: 0.72em;
   font-weight: 500;
   margin-bottom: 0.2em;
-  letter-spacing: 1px;
+  color: khaki;
+}
+
+.small-subhead {
+  margin: 0.3em 0 0.3em;
+}
+
+.panel-subhead {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.pwr-rating {
+  font-weight: 400;
+  font-size: 0.7rem;
 }
 
 .centered {
@@ -113,6 +128,56 @@ h2 {
   column-gap: 1ch;
   align-items: center;
   grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.team-name {
+  cursor: pointer;
+}
+
+.team-panel {
+  width: 300px;
+  height: auto;
+  background-color: beige;
+  color: green;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.panel-close-btn {
+  z-index: 1100;
+  position: absolute;
+  right: 6px;
+  top: 4px;
+  background-color: green;
+}
+
+.panel-header {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.team-schedule {
+  margin-top: 0.5rem;
+}
+
+.schedule-list {
+  list-style-type: none;
+}
+
+.team-sch-wk {
+  font-weight: 300;
+  font-size: 0.8em;
+  display: inline-block;
+  width: 2.8rem;
+}
+
+.ratings {
+  margin-top: 0.3rem;
 }
 
 .container {
