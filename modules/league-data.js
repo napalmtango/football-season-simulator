@@ -10,80 +10,30 @@ export const standings = [
   { team: "Tigers", division: "East", wins: 0, losses: 0, ties: 0, pct: ".000", pf: 0, pa: 0 },
 ];
 
+const teamFactory = (po = 50, pd = 50, ro = 50, rd = 50) => ({
+  passOff: po,
+  passDef: pd,
+  runOff: ro,
+  runDef: rd,
+  pwrRating() {
+    return Math.round((
+      this.passOff * 1.4 + 
+      this.passDef * 1.4 +
+      this.runOff +
+      this.runDef) / 4);
+  }
+})
+
 export const teamRatings = {
-  Gladiators: {
-    passOff: 50, 
-    passDef: 50, 
-    runOff: 50, 
-    runDef: 50,
-    pwrRating() {
-    return Math.round((this.passOff + this.passDef + this.runOff + this.runDef) / 4);
-  }
-  },
-  Knights: {
-    passOff: 50, 
-    passDef: 50, 
-    runOff: 50, 
-    runDef: 50,
-    pwrRating() {
-    return Math.round((this.passOff + this.passDef + this.runOff + this.runDef) / 4);
-  }
-  },
-  Redhawks: {
-    passOff: 50, 
-    passDef: 50, 
-    runOff: 50, 
-    runDef: 50,
-    pwrRating() {
-    return Math.round((this.passOff + this.passDef + this.runOff + this.runDef) / 4);
-  }
-  },
-  Vortex: {
-    passOff: 50, 
-    passDef: 50, 
-    runOff: 50, 
-    runDef: 50,
-    pwrRating() {
-    return Math.round((this.passOff + this.passDef + this.runOff + this.runDef) / 4);
-  }
-  },
-  Ironclads: {
-    passOff: 50, 
-    passDef: 50, 
-    runOff: 50, 
-    runDef: 50,
-    pwrRating() {
-    return Math.round((this.passOff + this.passDef + this.runOff + this.runDef) / 4);
-  }
-  },
-  Outlaws: {
-    passOff: 50, 
-    passDef: 50, 
-    runOff: 50, 
-    runDef: 50,
-    pwrRating() {
-    return Math.round((this.passOff + this.passDef + this.runOff + this.runDef) / 4);
-  }
-  },
-  Thunderbolts: {
-    passOff: 50, 
-    passDef: 50, 
-    runOff: 50, 
-    runDef: 50,
-    pwrRating() {
-    return Math.round((this.passOff + this.passDef + this.runOff + this.runDef) / 4);
-  }
-  },
-  Tigers: {
-    passOff: 50, 
-    passDef: 50, 
-    runOff: 50, 
-    runDef: 50,
-    pwrRating() {
-    return Math.round((this.passOff + this.passDef + this.runOff + this.runDef) / 4);
-  }
-  },
-}
+  Gladiators: teamFactory(),
+  Knights: teamFactory(),
+  Redhawks: teamFactory(),
+  Vortex: teamFactory(),
+  Ironclads: teamFactory(),
+  Outlaws: teamFactory(),
+  Thunderbolts: teamFactory(),
+  Tigers: teamFactory()
+};
 
 //const divB = ["Thunderbolts", "Outlaws", "Titans", "Ironclads"];
 

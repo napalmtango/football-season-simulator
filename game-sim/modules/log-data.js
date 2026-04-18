@@ -29,3 +29,10 @@ export function logData(visitor, home){
   console.log(`%cPass:${teamRatings[home].passOff-teamRatings[visitor].passDef} Run:${teamRatings[home].runOff-teamRatings[visitor].runDef}`,'font-weight:bold');
 }
 
+export function logDriveModifiers(offense, defense, mods) {
+  console.group(`Drive Analysis: ${offense} vs ${defense}`);
+  console.log(`%cFG Multiplier: ${mods.fgMultiplier.toFixed(3)}`, "color: #3498db");
+  console.log(`%cTD Multiplier: ${mods.tdMultiplier.toFixed(3)}`, "color: #e67e22");
+  console.log(`Offense Run Power: ${mods.runPower}`);
+  console.groupEnd();
+}
