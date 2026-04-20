@@ -45,7 +45,7 @@ function simulateQuarter(visitor, home, activeRatings) {
 
     // 3. MATCHUP CALCULATOR: Get multipliers for this specific drive
     const mods = getMatchupModifiers(offense, defense, activeRatings);
-    console.log(mods);
+   
     logDriveModifiers(offense, defense, mods);
 
     // 4. WINDOW LOGIC: Stacked probabilities
@@ -59,7 +59,7 @@ function simulateQuarter(visitor, home, activeRatings) {
     const tdThreshold = fgThreshold + tdWindow;
 
     const rnd = Math.random();
-    console.log(offense,rnd);
+    console.log(offense,rnd.toFixed(3),fgThreshold.toFixed(3), tdThreshold.toFixed(3));
 
     if (rnd <= fgThreshold) {
       updateScoreboard(offense, 3);

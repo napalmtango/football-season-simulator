@@ -12,15 +12,15 @@ export const standings = [
 
 const teamFactory = (po = 50, pd = 50, ro = 50, rd = 50) => ({
   passOff: po,
-  passDef: pd,
   runOff: ro,
+  passDef: pd,
   runDef: rd,
   pwrRating() {
     return Math.round((
       this.passOff * 1.4 + 
       this.passDef * 1.4 +
-      this.runOff +
-      this.runDef) / 4);
+      this.runOff * .6 +
+      this.runDef * .6) / 4);
   }
 })
 
