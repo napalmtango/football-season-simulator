@@ -5,78 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Sim Testing Dashboard</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="testing-dashboard.css">
   <style>
-    body {
-      background-color: hsl(210, 8%, 30%);
-      color: #f5f5f5bd;
-      font-size: .75rem;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    td {
-      width: 4rem;
-    }
-    .team-name {
-      width: 6rem;
-      text-align: left;
-    }
-    .header-row {
-      text-align: center;
-    }
-    tbody {
-      text-align: center;
-    }
-    nav {
-      width:100%;
-      height: auto;
-      padding: .4rem;
-      background-color: hsl(210, 8%, 20%);
-      margin-bottom: .5rem;
-    }
-    .main-menu button {
-      background-color: #bdbdbd38;
-      border-radius: 0;
-      min-width: 7rem;
-    }
-    .horiz-menu {
-      margin-left:.4rem ;
-      display: flex;
-      /* justify-self: center; */
-      gap: .4rem;
-      list-style-type: none;
-    }
-    main {
-      width: 700px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 60% 40%;
-    }
-    .pull-down-container {
-      width:100%;
-      height: 1.1rem;
-      /* background-color: hsl(210, 8%, 25%); */
-      /* border-bottom: 1px solid gray; */
-    }
-    .test-name {
-      display: inline-block;
-      width:60px;
-    }
-    .pulldown {
-      padding: 0 0.5rem;
-      width: 180px;
-      height: auto;
-      border: 1px solid black;
-      border-radius: 2px;
-      display: grid;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    .choose-item {
-      display: grid;
-      justify-content: center;
-    }
+    
   </style>
 </head>
 <body>
@@ -92,9 +23,26 @@
 </template>
 <nav id="main-menu" class="main-menu">
   <ul class='horiz-menu'>
-    <li><button id='generate-btn'>Generate</button></li>
-    <li><button id='save-local-storage-btn'>To localStorage</button></li>
-    <li><button id='run-sim-btn'>Run Sim</button></li>
+    <li>
+      <button id='generate-btn'>
+        Generate Ratings
+      </button>
+    </li>
+    <li>
+      <button id='run-sim-btn'>
+        Run Sim
+      </button>
+    </li>
+    <li>
+      <button id='load-local-storage-btn'>
+        From localStorage
+      </button>
+    </li>
+    <li>
+      <button id='save-local-storage-btn'>
+        To localStorage
+      </button>
+    </li>
 </ul>
 </nav>
 <main>
@@ -117,7 +65,7 @@
   </div>
   <div class='pull-down-container'>
     <div id="pulldown" class="pulldown">
-        <div id="choose-item" class="choose-item">--- Choose Item ---</div>
+        <div id="choose-item" class="choose-item">--- Choose&nbsp;<span id='pulldown-state'></span> ---</div>
 
         <div class="expander" id="expander">
           <div class="expander-content"></div>
@@ -125,9 +73,9 @@
       </div>
   </div>
   
-  <div>Test Matchup - Gladiators @ Knights</div>
+  <div>Test Matchup - <span data-visitor='visitor'>Visitor</span> @ <span data-home='home'>Home</span></div>
   <div>
-    <span class='test-name'>Gladiators</span>
+    <span class='test-name' data-visitor='visitor'>Visitor</span>
     &nbsp;
     <span>Pass:<span id='visitor-pass'>&nbsp;00</span></span>
     &nbsp;
@@ -135,7 +83,7 @@
   </div>
   <div></div>
   <div>
-    <span class='test-name'>Knights</span>
+    <span class='test-name' data-home='home'>Home</span>
     &nbsp;
     <span>Pass:<span id='home-pass'>&nbsp;00</span></span>
     &nbsp;

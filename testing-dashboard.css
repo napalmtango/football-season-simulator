@@ -1,0 +1,104 @@
+body {
+  background-color: hsl(210, 8%, 30%);
+  color: #f5f5f5bd;
+  font-size: .75rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+td {
+  width: 4rem;
+}
+.team-name {
+  width: 6rem;
+  text-align: left;
+}
+.header-row {
+  text-align: center;
+}
+tbody {
+  text-align: center;
+}
+nav {
+  width:100%;
+  height: auto;
+  padding: .4rem;
+  background-color: hsl(210, 8%, 20%);
+  margin-bottom: .5rem;
+}
+.main-menu button {
+  background-color: #bdbdbd38;
+  border-radius: 0;
+  min-width: 7rem;
+}
+.horiz-menu {
+  margin-left:.4rem ;
+  display: flex;
+  /* justify-self: center; */
+  gap: .4rem;
+  list-style-type: none;
+}
+main {
+  width: 700px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.pull-down-container {
+  width:100%;
+  height: 1.1rem;
+  /* background-color: hsl(210, 8%, 25%); */
+  /* border-bottom: 1px solid gray; */
+}
+.test-name {
+  display: inline-block;
+  width:70px;
+}
+.pulldown {
+  padding: 0 0.5rem;
+  width: 180px;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 2px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.choose-item {
+  display: flex;
+  justify-content: center;
+}
+.expander {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 250ms;
+}
+
+.expander-content {
+  min-height: 0;
+  transition: visibility 250ms;
+  visibility: hidden;
+}
+
+.expander-content div {
+  width: 300px;
+  overflow-x: hidden;
+}
+
+/* .expander-content .choose-task {
+  font-size: 0.47rem;
+  text-transform: uppercase;
+  margin: 0.45em 0 0;
+  text-align: center;
+  width: 225px;
+} */
+
+.expander.expanded {
+  grid-template-rows: 1fr;
+}
+
+.expander.expanded .expander-content {
+  visibility: visible;
+}

@@ -2,6 +2,16 @@ import { teamRatings } from './league-data.js';
 
 import { createRandomRatings } from './random-ratings.js';
 
+import { pulldown } from './pulldown.js';
+
+let ratingsPopulated = false;
+
+export let visitor = 'Visitor';
+export let home = 'Home';
+
+export function setVisitor(val) { visitor = val; }
+export function setHome(val) { home = val; }
+
 export function renderRatingsTable(){
   
   const tBodyEl = document.querySelector('#ratings-table tbody');
@@ -31,42 +41,68 @@ export function uiElements()  {
   const mainMenuEl = document.querySelector('#main-menu');
   mainMenuEl.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
-      console.log(`${event.target.textContent} btn clicked`);
+      console.log(`${event.target.innerText} clicked`);
 
-      if (event.target.textContent === 'Generate') {
+      if (event.target.id === 'generate-btn') {
         createRandomRatings();
         renderRatingsTable();
-        renderTestMatchup();
+        ratingsPopulated = true;
+      }
+
+      if (event.target.id === 'load-local-storage-btn') {
+        const ratingsFrLocalStorage = JSON.parse(localStorage.getItem('teamRatings'));
+        if (ratingsFrLocalStorage) {
+          console.log(ratingsFrLocalStorage);
+          Object.keys(teamRatings).forEach(team => {
+            if (teamRatings[team]) {
+              // Object.assign updates targetData[team] in-place, keeping the method intact
+              Object.assign(teamRatings[team], ratingsFrLocalStorage[team]);
+            }
+          });
+          console.log(teamRatings);
+          renderRatingsTable();
+          ratingsPopulated = true;
+        }
+      }
+
+      if (event.target.id === 'save-local-storage-btn') {
+        console.log('Save localStorage btn clicked');
+        if (ratingsPopulated) {
+          console.log('Ratings populated')
+          console.log(teamRatings);
+          localStorage.setItem('teamRatings', JSON.stringify(teamRatings));
+        }
       }
     }
   });
 }
 
-function renderTestMatchup() {
+export function renderTestMatchup() {
     console.log('Gladiators',teamRatings.Gladiators)
 
     const visitorPassEl = document.querySelector('#visitor-pass');
     visitorPassEl.textContent = `\u00A0${
-      teamRatings.Gladiators.passOff-
-      teamRatings.Knights.passDef
+      teamRatings[visitor].passOff-
+      teamRatings[home].passDef
     }`;
     
     const visitorRunEl = document.querySelector('#visitor-run');
     visitorRunEl.textContent = `\u00A0${
-      teamRatings.Gladiators.runOff-
-      teamRatings.Knights.runDef
+      teamRatings[visitor].runOff-
+      teamRatings[home].runDef
     }`;
 
     const homePassEl = document.querySelector('#home-pass');
     homePassEl.textContent = `\u00A0${
-      teamRatings.Knights.passOff-
-      teamRatings.Gladiators.passDef
+      teamRatings[home].passOff-
+      teamRatings[visitor].passDef
     }`;
     
     const homeRunEl = document.querySelector('#home-run');
     homeRunEl.textContent = `\u00A0${
-      teamRatings.Knights.runOff-
-      teamRatings.Gladiators.runDef
+      teamRatings[home].runOff-
+      teamRatings[visitor].runDef
     }`;
 }
 
+pulldown();
