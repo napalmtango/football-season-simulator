@@ -27,7 +27,7 @@ export function renderRatingsTable(){
     clone.querySelector('.team-name').textContent = name;
     clone.querySelector('.pass-off').textContent = stats.off;
     clone.querySelector('.pass-def').textContent = stats.def;
-    clone.querySelector('.overall').textContent = stats.pwrRating();
+    clone.querySelector('.overall').textContent = stats.pwrRating;
 
     // Append to tBodyEl
     tBodyEl.appendChild(clone);
@@ -75,7 +75,9 @@ export function uiElements()  {
 }
 
 export function renderTestMatchup() {
-    console.log('Gladiators',teamRatings.Gladiators)
+    // console.log(visitor);
+    console.log(visitor,teamRatings[visitor])
+    console.log(home,teamRatings[home])
 
     const visitorPassEl = document.querySelector('#visitor-pass');
     visitorPassEl.textContent = `\u00A0${

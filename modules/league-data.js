@@ -19,7 +19,7 @@ export const teamFactory = (passOff = 50, runOff = 50, passDef = 50, runDef = 50
   off: Math.round((passOff + runOff) / 2),
   def: Math.round((passDef + runDef) / 2),
 
-  pwrRating() {
+  get pwrRating() {
     return Math.round((this.off + this.def) / 2);
   }
 });
