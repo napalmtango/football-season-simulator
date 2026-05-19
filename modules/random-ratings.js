@@ -4,6 +4,8 @@ import { divisionB } from './league-data.js';
 
 import { teamRatings } from './league-data.js';
 
+import { teamFactory } from './league-data.js';
+
 const RATINGS_LIMITS = {
   min: 15,
   max: 85
@@ -28,28 +30,25 @@ const divs = [divisionA, divisionB];
 export function createRandomRatings() {
   console.log('createRandomRatings() invoked');
 
-  const ratingsKeys = ['passOff', 'runOff', 'passDef', 'runDef'];
+  const getRandomRating = () => {
+    let rawValue = randomBellCurve(50, 18);
+    return Math.min(Math.max(rawValue, RATINGS_LIMITS.min), RATINGS_LIMITS.max);
+  };
 
-  divs.forEach((division) =>{
-    division.forEach((team) =>{ 
-      const teamData = teamRatings[team];
+  divs.forEach((division) => {
+    division.forEach((team) => { 
+      if (teamRatings[team]) {
+        const passOff = getRandomRating();
+        const runOff = getRandomRating();
+        const passDef = getRandomRating();
+        const runDef = getRandomRating();
 
-      if (teamData) {
-        ratingsKeys.forEach(key => {
-          let rawValue = randomBellCurve(50, 18);
-
-          //Clamping to keep ratings within limits defined by RATINGS_LIMITS defined above
-          teamData[key] = Math.min(Math.max(rawValue, RATINGS_LIMITS.min), RATINGS_LIMITS.max);
-        })
-      //   // Randomly create ratings for passOff, runOff, passDef, and runDef
-      //   teamRatings[team].passOff = randomBellCurve(50, 18);
-      //   teamRatings[team].runOff = randomBellCurve(50, 18);
-      //   teamRatings[team].passDef = randomBellCurve(50, 18);
-      //   teamRatings[team].runDef = randomBellCurve(50, 18);
-      // } else {
-      //   console.error(`Team ${team} not found in teamRatings!`);
+        teamRatings[team] = teamFactory(passOff, runOff, passDef, runDef);
+      } else {
+        console.error(`Team ${team} not found in teamRatings!`);
       }
     });
   });
-    console.log(`League Ratings Randomized (Clamped: ${RATINGS_LIMITS.min}-${RATINGS_LIMITS.max})`);
+
+  console.log(`League Ratings Randomized (Clamped: ${RATINGS_LIMITS.min}-${RATINGS_LIMITS.max})`);
 }

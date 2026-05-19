@@ -109,15 +109,15 @@ function applyErosion(activeRatings, defenseTeam, offenseRunRating) {
   activeRatings[defenseTeam].passDef = Math.max(15, activeRatings[defenseTeam].passDef);
 }
 
-function handleHalftime(activeRatings, visitor, home) {
-  [visitor, home].forEach(team => {
-    const base = teamRatings[team];
-    // Give back half of the stamina lost during the first half
-    activeRatings[team].runDef += (base.runDef - activeRatings[team].runDef) / 2;
-    activeRatings[team].passDef += (base.passDef - activeRatings[team].passDef) / 2;
-  });
-  console.log("%c Halftime adjustments: Players rested and hydrated. ", 'color: orange; font-style: italic;');
-}
+// function handleHalftime(activeRatings, visitor, home) {
+//   [visitor, home].forEach(team => {
+//     const base = teamRatings[team];
+//     // Give back half of the stamina lost during the first half
+//     activeRatings[team].runDef += (base.runDef - activeRatings[team].runDef) / 2;
+//     activeRatings[team].passDef += (base.passDef - activeRatings[team].passDef) / 2;
+//   });
+//   console.log("%c Halftime adjustments: Players rested and hydrated. ", 'color: orange; font-style: italic;');
+// }
 
 function updateScoreboard(offense, points) {
   scoreboard[offense].score += points;

@@ -25,11 +25,8 @@ export function renderRatingsTable(){
 
     // Select and set textContent for each item in the the cloned template
     clone.querySelector('.team-name').textContent = name;
-    clone.querySelector('.pass-off').textContent = stats.passOff;
-
-    clone.querySelector('.run-off').textContent = stats.runOff;
-    clone.querySelector('.pass-def').textContent = stats.passDef;
-    clone.querySelector('.run-def').textContent = stats.runDef;
+    clone.querySelector('.pass-off').textContent = stats.off;
+    clone.querySelector('.pass-def').textContent = stats.def;
     clone.querySelector('.overall').textContent = stats.pwrRating();
 
     // Append to tBodyEl
@@ -82,27 +79,17 @@ export function renderTestMatchup() {
 
     const visitorPassEl = document.querySelector('#visitor-pass');
     visitorPassEl.textContent = `\u00A0${
-      teamRatings[visitor].passOff-
-      teamRatings[home].passDef
+      teamRatings[visitor].off-
+      teamRatings[home].def
     }`;
     
-    const visitorRunEl = document.querySelector('#visitor-run');
-    visitorRunEl.textContent = `\u00A0${
-      teamRatings[visitor].runOff-
-      teamRatings[home].runDef
-    }`;
 
     const homePassEl = document.querySelector('#home-pass');
     homePassEl.textContent = `\u00A0${
-      teamRatings[home].passOff-
-      teamRatings[visitor].passDef
+      teamRatings[home].off-
+      teamRatings[visitor].def
     }`;
     
-    const homeRunEl = document.querySelector('#home-run');
-    homeRunEl.textContent = `\u00A0${
-      teamRatings[home].runOff-
-      teamRatings[visitor].runDef
-    }`;
 }
 
 pulldown();

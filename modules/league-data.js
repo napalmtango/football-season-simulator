@@ -10,19 +10,19 @@ export const standings = [
   { team: "Tigers", division: "East", wins: 0, losses: 0, ties: 0, pct: ".000", pf: 0, pa: 0 },
 ];
 
-const teamFactory = (po = 50, pd = 50, ro = 50, rd = 50) => ({
-  passOff: po,
-  runOff: ro,
-  passDef: pd,
-  runDef: rd,
+export const teamFactory = (passOff = 50, runOff = 50, passDef = 50, runDef = 50) => ({
+  passOff: passOff,
+  runOff: runOff,
+  passDef: passDef,
+  runDef: runDef,
+
+  off: Math.round((passOff + runOff) / 2),
+  def: Math.round((passDef + runDef) / 2),
+
   pwrRating() {
-    return Math.round((
-      this.passOff * 1.4 + 
-      this.passDef * 1.4 +
-      this.runOff * .6 +
-      this.runDef * .6) / 4);
+    return Math.round((this.off + this.def) / 2);
   }
-})
+});
 
 export const teamRatings = {
   Gladiators: teamFactory(),

@@ -6,92 +6,89 @@
   <title>Game Sim Testing Dashboard</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="testing-dashboard.css">
-  <style>
-    
-  </style>
 </head>
 <body>
   <template id="team-row-template">
     <tr>
       <td class="team-name"></td>
       <td class="pass-off"></td>
-      <td class="run-off"></td>
       <td class="pass-def"></td>
-      <td class="run-def"></td>
       <td class="overall"></td>
-  </tr>
-</template>
-<nav id="main-menu" class="main-menu">
-  <ul class='horiz-menu'>
-    <li>
-      <button id='generate-btn'>
-        Generate Ratings
-      </button>
-    </li>
-    <li>
-      <button id='run-sim-btn'>
-        Run Sim
-      </button>
-    </li>
-    <li>
-      <button id='load-local-storage-btn'>
-        From localStorage
-      </button>
-    </li>
-    <li>
-      <button id='save-local-storage-btn'>
-        To localStorage
-      </button>
-    </li>
-</ul>
-</nav>
-<main>
-  <div id="ratings-display">
-    <table id="ratings-table">
-      <thead>
-        <tr class='header-row'>
-          <th class='team-name'>Team</th>
-          <th>passOff</th>
-          <th>runOff</th>
-          <th>passDef</th>
-          <th>runDef</th>
-          <th>pwr</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Rows will be injected here -->
-      </tbody>
-    </table>
-  </div>
-  <div class='pull-down-container'>
-    <div id="pulldown" class="pulldown">
-        <div id="choose-item" class="choose-item">--- Choose&nbsp;<span id='pulldown-state'></span> ---</div>
+    </tr>
+  </template>
+  <nav id="main-menu" class="main-menu">
+    <ul class='horiz-menu'>
+      <li>
+        <button id='generate-btn'>
+          Generate Ratings
+        </button>
+      </li>
+      <li>
+        <button id='run-sim-btn'>
+          Run Sim
+        </button>
+      </li>
+      <li>
+        <button id='load-local-storage-btn'>
+          From localStorage
+        </button>
+      </li>
+      <li>
+        <button id='save-local-storage-btn'>
+          To localStorage
+        </button>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <div id="ratings-display">
+      <table id="ratings-table">
+        <thead>
+          <tr class='header-row'>
+            <th class='team-name'>Team</th>
+            <th>Offense</th>
+            <th>Defense</th>
+            <th>pwr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be injected here -->
+        </tbody>
+      </table>
+    </div>
 
-        <div class="expander" id="expander">
-          <div class="expander-content"></div>
+    <div class='pull-down-container'>
+      <div id="pulldown" class="pulldown">
+          <div id="choose-item" class="choose-item">--- Choose&nbsp;<span id='pulldown-state'></span> ---</div>
+
+          <div class="expander" id="expander">
+            <div class="expander-content"></div>
+          </div>
         </div>
-      </div>
-  </div>
-  
-  <div>Test Matchup - <span data-visitor='visitor'>Visitor</span> @ <span data-home='home'>Home</span></div>
-  <div>
-    <span class='test-name' data-visitor='visitor'>Visitor</span>
-    &nbsp;
-    <span>Pass:<span id='visitor-pass'>&nbsp;00</span></span>
-    &nbsp;
-    <span>Run:<span id='visitor-run'>&nbsp;00</span></span>
-  </div>
-  <div></div>
-  <div>
-    <span class='test-name' data-home='home'>Home</span>
-    &nbsp;
-    <span>Pass:<span id='home-pass'>&nbsp;00</span></span>
-    &nbsp;
-    <span>Run:<span id='home-run'>&nbsp;00</span></span>
-  </div>
+    </div>
+    
+    <div>Test Matchup - <span data-visitor='visitor'>Visitor</span> @ <span data-home='home'>Home</span></div>
+    
+    <div>
+      <span class='test-name' data-visitor='visitor'>Visitor</span>
+      &nbsp;
+      <span id='visitor-pass'>&nbsp;00</span>
+      &nbsp;
+      </span>
+    </div>
+    
+    <div></div>
+    
+    <div>
+      <span class='test-name' data-home='home'>Home</span>
+      &nbsp;
+      <span id='home-pass'>&nbsp;00</span>
+      &nbsp;
+      
+    </div>
+  </main>
 
-</main>
-<script type="module" src="./modules/game-sim-main.js"></script>
+  <script type="module" src="./modules/game-sim-main.js"></script>
 
 </body>
 </html>

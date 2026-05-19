@@ -27,6 +27,7 @@ export function pulldown() {
   });
 
   function renderPulldown() {
+    console.log('Team State: ',teamState);
     const expanderContentEl = document.querySelector('.expander-content');
 
     expanderContentEl.replaceChildren();
@@ -61,7 +62,7 @@ export function pulldown() {
           elements.forEach(element => {
               element.textContent = selectedName;
           });
-          teamState = 'Vistor';
+          teamState = 'Visitor';
           renderTestMatchup();
           pulldownStateEl.textContent = teamState;
         }
